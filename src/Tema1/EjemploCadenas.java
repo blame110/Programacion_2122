@@ -44,6 +44,17 @@ public class EjemploCadenas {
 		
 		System.out.println("Posicion de la 2 cadena en la 1: " + texto.indexOf(palabra));
 		
+		
+		float media=0f;
+		
+		int num1=2,num2=3;
+		
+		media = (float) (num1+num2)/2;
+		
+		System.out.println(media);
+		
+		//Para leer cadenas con espacios en blanco utilizaremos nextLine		
+		String cadena = teclado.nextLine();
 
 	}
 
