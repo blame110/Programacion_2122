@@ -61,6 +61,8 @@ public class EjemploCadenas {
 		// Para leer cadenas con espacios en blanco utilizaremos nextLine
 		String cadena = teclado.nextLine();
 
+		teclado.close();
+
 	}
 
 }

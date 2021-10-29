@@ -35,7 +35,7 @@ public class EjemploSwitch {
 		case 2:
 		case 3:
 		case 4:
-			mensaje = "Has Suspendido";
+			mensaje = "Has  Suspendido";
 			break;
 		case 5:
 			mensaje = "Has sacado un Suficiente";
@@ -60,6 +60,17 @@ public class EjemploSwitch {
 		// Mostramos una ventana con el resultado
 		JOptionPane.showMessageDialog(null, mensaje, "Calificación", JOptionPane.INFORMATION_MESSAGE);
 
+	}
+
+	/**
+	 * asdf adsfasdf a
+	 * 
+	 * @param x
+	 * @param y
+	 * @return asdfasdf
+	 */
+	public int suma(int x, int y) {
+		return x + y;
 	}
 
 }
