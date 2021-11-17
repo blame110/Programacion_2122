@@ -1,4 +1,4 @@
-package pruebas;
+package prueba;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class JavaPdfBoxWriteText {
 				cont.newLine();
 
 				String line3 = "It involved the vast majority of the world's "
-						+ "countries—including all of the great powers—";
+						+ "countriesï¿½including all of the great powersï¿½";
 				cont.showText(line3);
 				cont.newLine();
 

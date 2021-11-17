@@ -1,4 +1,4 @@
-package Tema1;
+package tema1base;
 
 public class Alumno {
 
