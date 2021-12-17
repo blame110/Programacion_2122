@@ -3,7 +3,7 @@ package tema2;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class EjemplosBuclesWhile2 {
+public class EjemploWhileMenu {
 
 	final static int OPCION_INTRODUCIR = 1;
 	final static int OPCION_CALCULAR = 2;
@@ -16,20 +16,20 @@ public class EjemplosBuclesWhile2 {
 		// nombre, edad, renta, numero de suspensos
 		// Y calcule si tiene derecho a beca
 
-		// La beca se le dará si es menor de 25 años y la renta es inferior a 20000
+		// La beca se le darï¿½ si es menor de 25 aï¿½os y la renta es inferior a 20000
 		// O es menor de 18 y ha suspendido 0 asignaturas
 		// el importe sera un 10% de la renta, divido entre los supensos en el primer
 		// caso
 		// Y un 20% de la renta en el segundo
 
-		// Declaración de variables
+		// Declaraciï¿½n de variables
 		int edad = 0, numSuspensos = 0, opcionMenu = 0;
 		double renta = 0.0;
 		String nombre = "";
 		double cuantiaBeca = 0.0;
 		Scanner teclado = new Scanner(System.in);
 
-		// Mientras el usuario no seleccione la opción de salir seguimos ejecutando
+		// Mientras el usuario no seleccione la opciï¿½n de salir seguimos ejecutando
 		while (opcionMenu != OPCION_SALIR) {
 
 			// Tratamiento elemento actual
@@ -37,7 +37,7 @@ public class EjemplosBuclesWhile2 {
 
 				System.out.print("Introduce la edad:");
 				edad = teclado.nextInt();
-				System.out.print("Introduce el número de suspensos:");
+				System.out.print("Introduce el nï¿½mero de suspensos:");
 				numSuspensos = teclado.nextInt();
 				System.out.print("Introduce la renta:");
 				renta = teclado.nextDouble();
@@ -46,7 +46,7 @@ public class EjemplosBuclesWhile2 {
 
 			}
 
-			// La beca se le dará si es menor de 25 años y la renta es inferior a 20000
+			// La beca se le darï¿½ si es menor de 25 aï¿½os y la renta es inferior a 20000
 			// O es menor de 18 y ha suspendido 0 asignaturas
 			// el importe sera un 10% de la renta, divido entre los supensos en el primer
 			// caso
@@ -60,7 +60,7 @@ public class EjemplosBuclesWhile2 {
 				if (edad < 18 && numSuspensos == 0)
 					cuantiaBeca = renta * 20 / 100;
 				if (cuantiaBeca > 0.0)
-					System.out.println("\nTu beca ha sido concedida!!\nLa cuantía es:" + cuantiaBeca);
+					System.out.println("\nTu beca ha sido concedida!!\nLa cuantï¿½a es:" + cuantiaBeca);
 				else
 					System.out.println("La beca ha sido denegada. Try again.");
 

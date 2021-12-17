@@ -1,4 +1,4 @@
-package Tema1;
+package tema1base;
 
 //para poder utilizar ciertas clases hay que importar los paquetes
 import java.util.Scanner;

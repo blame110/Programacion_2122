@@ -1,4 +1,4 @@
-package Tema1;
+package tema1base;
 
 public class sumaDosNumerosAleatorios {
 
@@ -11,25 +11,25 @@ public class sumaDosNumerosAleatorios {
 		int resultado;
 
 		/*
-		 * Generamos un número aleatorio utilizando la función random de la libreria
+		 * Generamos un nï¿½mero aleatorio utilizando la funciï¿½n random de la libreria
 		 * MAth random genera un numero entre 0 y 1 en formato double, hay que
-		 * convertirlo a int utilizando (int). Lo multimplicamos x100 para que el número
-		 * sea entre 1 y 100 Se mete entre parentesis la multiplicación x100 para que la
+		 * convertirlo a int utilizando (int). Lo multimplicamos x100 para que el nï¿½mero
+		 * sea entre 1 y 100 Se mete entre parentesis la multiplicaciï¿½n x100 para que la
 		 * haga primero
 		 */
 		numero1 = (int) (Math.random() * 100);
 
-		// Mostramos el número1 generado
+		// Mostramos el nï¿½mero1 generado
 		System.out.println("El numero 1 es: " + numero1 + ", Ahora generaremos el siguiente");
 
 		numero2 = (int) (Math.random() * 100);
 
-		// Mostramos el número2 generado
+		// Mostramos el nï¿½mero2 generado
 		System.out.println("El numero 2 es: " + numero2);
 
 		resultado = numero1 + numero2;
 
-		System.out.println("La suma de los dos número es:" + resultado);
+		System.out.println("La suma de los dos nï¿½mero es:" + resultado);
 
 	}
 
