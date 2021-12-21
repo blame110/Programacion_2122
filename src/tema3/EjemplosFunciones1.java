@@ -13,22 +13,29 @@ public class EjemplosFunciones1 {
 		int num1 = 7, num2 = 8;
 		Date fecha = new Date();
 
-		System.out.println("La suma de 4 y 5 es:" + suma(23, 5));
+		System.out.println("La suma de 4 y 5 es:" + suma(num1, num2));
 
 		System.out.println("La suma de los numeros es:" + suma(num1, num2));
 
 		System.out.println("El máximo del array es " + max(numeros));
 
 		System.out.println(fecha.getDate());
-		
-		//Genero dos listas de numeros
+
+		// Genero dos listas de numeros
 		int lista1[] = genListaNumeros(50);
 		int lista2[] = genListaNumeros(150);
 		int lista3[] = concatenarListasNumeros(lista1, lista2);
-		
+
 		mostrarContenido(lista1);
 		mostrarContenido(lista2);
 		mostrarContenido(lista3);
+
+		// Pruebas de dni correcto
+		System.out.println(" El dni 11973309s es " + comprobacionDni("11973309s"));
+
+		
+		System.out.println(" El dni 455890634 es " + comprobacionDni("458944440444S"));
+
 		
 	}
 
@@ -46,6 +53,10 @@ public class EjemplosFunciones1 {
 		return resultado;
 	}
 
+	//Hacer Resta, multiplicacion y division, la division
+	//La division devuelve double y comprueba que no divida por 0
+	//Realizar tambien las funciones min y media que reciben un array de numeros
+	
 	public static int longitudCad(String cadena) {
 		return cadena.length();
 	}
@@ -87,68 +98,118 @@ public class EjemplosFunciones1 {
 
 	/**
 	 * Recibe dos parametros
+	 * 
 	 * @param listaNum1
 	 * @param listaNum2
 	 * @return
 	 */
 	static int[] concatenarListasNumeros(int listaNum1[], int listaNum2[]) {
-		
+
 		// El tamaño del array final sera la suma de los tamaños de los dos arrays
 		// Que recibimos como parametros en la funcion
 		int tamTotal = listaNum1.length + listaNum2.length;
 		int arrayResultado[] = new int[tamTotal];
-		
+
 		// Copiamos el primer array
 		for (int i = 0; i < listaNum1.length; i++) {
 			arrayResultado[i] = listaNum1[i];
 		}
 
 		// Copiamos el segundo array a partir de la primera posición vacia
-		//En el arrayResultado, que es la longitud del primer array
+		// En el arrayResultado, que es la longitud del primer array
 		for (int i = 0; i < listaNum2.length; i++) {
-			arrayResultado[i+listaNum1.length] = listaNum2[i];
+			arrayResultado[i + listaNum1.length] = listaNum2[i];
 		}
-		
-		//Devolvemos el array
+
+		// Devolvemos el array
 		return arrayResultado;
 
 	}
-	
+
 	/**
 	 * Muestra por pantalla los numeros de un array
+	 * 
 	 * @param listaNum
 	 */
-	static void mostrarContenido(int listaNum[])
-	{
-		//Mostramos todos los elementos
-		int i=0;
-		while (i<listaNum.length)
-		{
-			System.out.println("Posición "+ (i+1) + ": " +listaNum[i]);
+	static void mostrarContenido(int listaNum[]) {
+		// Mostramos todos los elementos
+		int i = 0;
+		while (i < listaNum.length) {
+			System.out.println("Posición " + (i + 1) + ": " + listaNum[i]);
 			i++;
 		}
 
-		
 	}
-	
+
 	/**
 	 * Nos genera un array de numeros aleatorios
+	 * 
 	 * @param longitud
 	 * @return
 	 */
-	static int[] genListaNumeros(int longitud)
-	{
-		//Creamos un array de numeros con la longitud que nos
-		//Pasan como parametro
+	static int[] genListaNumeros(int longitud) {
+		// Creamos un array de numeros con la longitud que nos
+		// Pasan como parametro
 		int listaGenerada[] = new int[longitud];
-		
-		for (int i=0;i<listaGenerada.length;i++)
-		{
-			listaGenerada[i]=(int)(Math.random()*100+1);
+
+		for (int i = 0; i < listaGenerada.length; i++) {
+			listaGenerada[i] = (int) (Math.random() * 100 + 1);
 		}
-		
-		//Devolvemos la lista
+
+		// Devolvemos la lista
 		return listaGenerada;
+	}
+
+	/**
+	 * Comprueba el formato de un dni
+	 * 
+	 * @param dni
+	 * @return Cierto si el formato es correcto
+	 */
+	public static boolean comprobacionDni(String dni) {
+		// Variable para almacenar caracteres temporalmente
+		char caracter = ' ';
+
+		// Array de letras del dni asociadas a la posicion correspondiente
+		// Al resto de dividir la parte númerica entre 23
+		char letras[] = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H',
+				'L', 'C', 'K', 'E' };
+
+		// Si el dni no tiene la longitud adecuada
+
+		if (dni.length() > 9 || dni.length() < 8)
+			return false;
+
+		// Si el ultimo caracter no es una letra
+		// Devuelvo falso
+		/*
+		 * Para pasar de string a numero utilizamos la funcion valueOf Que tienen todas
+		 * las clases numericas asociadas tipos primitivos como Double Float y Integer
+		 * 
+		 * Para hacer la operacion contraria, pasar de numero a String Estas mismas
+		 * clases tienen la funcion parse, que convierte el número en string
+		 */
+
+		// Guardamos el último char del dni en una variable
+		caracter = dni.charAt(dni.length() - 1);
+
+		// Guardamos en numeroDni la parte numerica de nuestro dni
+		int numeroDni = Integer.valueOf(dni.substring(0, dni.length() - 1));
+
+		if (!Character.isAlphabetic(caracter) || Character.toUpperCase(caracter) != letras[numeroDni % 23])
+			return false;
+
+		// Comprobamos que el resto de posiciones son numericas
+		for (int i = 0; i < dni.length() - 2; i++) {
+			// Comprueba para cada posicion si es un número
+			// En caso de no ser un número devuelvo falso
+			caracter = dni.charAt(i);
+			if (!Character.isDigit(caracter))
+				return false;
+		}
+
+		return true;
+
 	}
 
 }
