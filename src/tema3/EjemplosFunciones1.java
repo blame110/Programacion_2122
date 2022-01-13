@@ -3,11 +3,27 @@ package tema3;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Scanner;
 
 public class EjemplosFunciones1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
+		Scanner teclado = new Scanner(System.in);
+		int edad;
+
+		String strEdad;
+		// Leemos la edad como cadena de texto
+		// Que es lo normal en un formulario
+		System.out.println("Introduce tu edad:");
+		strEdad = teclado.next();
+
+		if (esNumerico(strEdad)) {
+			edad = Integer.valueOf(strEdad);
+			System.out.println("Edad:" + edad);
+		} else
+			System.out.println("Solo números, pretty please");
 
 		int numeros[] = { 3, 23, 8, 2, 3 };
 		int num1 = 7, num2 = 8;
@@ -33,10 +49,8 @@ public class EjemplosFunciones1 {
 		// Pruebas de dni correcto
 		System.out.println(" El dni 11973309s es " + comprobacionDni("11973309s"));
 
-		
 		System.out.println(" El dni 455890634 es " + comprobacionDni("458944440444S"));
 
-		
 	}
 
 	/**
@@ -53,10 +67,10 @@ public class EjemplosFunciones1 {
 		return resultado;
 	}
 
-	//Hacer Resta, multiplicacion y division, la division
-	//La division devuelve double y comprueba que no divida por 0
-	//Realizar tambien las funciones min y media que reciben un array de numeros
-	
+	// Hacer Resta, multiplicacion y division, la division
+	// La division devuelve double y comprueba que no divida por 0
+	// Realizar tambien las funciones min y media que reciben un array de numeros
+
 	public static int longitudCad(String cadena) {
 		return cadena.length();
 	}
@@ -210,6 +224,29 @@ public class EjemplosFunciones1 {
 
 		return true;
 
+	}
+
+	/**
+	 * La funcion comprueba si la cadena de texto contiene un número
+	 * 
+	 * @param strNumero
+	 * @return true si es numerica
+	 */
+	public static boolean esNumerico(String strNumero) {
+
+		boolean esNumerico = true;
+		try {
+			// Si no da error la conversion a int
+			// Implica que la cadena strNumero es toda númerica
+			Integer.valueOf(strNumero);
+
+		} catch (NumberFormatException nfe) {
+			// Si entra aqui es que ha saltado un error en la conversion
+			// La cadena tiene elementos no númericos
+			esNumerico = false;
+		}
+
+		return esNumerico;
 	}
 
 }
