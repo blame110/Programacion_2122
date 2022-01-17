@@ -7,18 +7,31 @@ package Tronan;
  */
 public class Personaje {
 
+	public int getDestreza() {
+		return destreza;
+	}
+
+	public void setDestreza(int destreza) {
+		this.destreza = destreza;
+	}
+
 	// Constantes Globales de la clase
 	public static final int HOMBRE = 1;
 	public static final int MUJER = 2;
 
 	// Variables Miembro
+	//Si la definimos publica es visible desde cualquier lugar
 	public int vida;
 	public int nivel;
 	public int fuerza;
-	public int destreza;
+	//Si la definimos privada es sólo visible desde el código de nuestra clase
+	private int destreza;
 	public int resistencia;
 	public String nombre;
-	public int edad;
+	//Si la definimos protected es visible desde el paquete donde este la clase
+	//Y las clases que hereden
+	protected int edad;
+	public static String region;
 	// Pongo la variable miembro estado privada
 	// solo es accesible desde dentro de su misma clase
 	private int estado;
@@ -44,7 +57,7 @@ public class Personaje {
 	 * Constructor de la clase Personaje
 	 * Se ejecuta cuando creamos el objeto con new
 	 */
-	Personaje ()
+	public Personaje ()
 	{
 		//Inicializamos las variables
 		vida=0;
@@ -70,4 +83,13 @@ public class Personaje {
 		resistencia = RPGUtils.tirarDados() / 8 + 1;
 
 	}
+	
+	public String toString()
+	{
+		String texto = "Nombre: "+ nombre + " Vida: " +  vida + " Nivel : " +  nivel + " Fuerza: " + fuerza;
+		
+		return texto;
+	}
+	
+	
 }

@@ -1,12 +1,16 @@
 package tema2;
 
 import java.util.Scanner;
+import Tronan.Personaje;
 
 public class EjemploCondicional1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Personaje ivan = new Personaje();
+		//Desde aqui no podemos acceder a los protected
+		
 		int edad = 0;
 		float sueldo = 0.0F;
 		String nombre = "", password = "", estadoCivil = "";
