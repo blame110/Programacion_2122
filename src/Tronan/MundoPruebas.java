@@ -41,6 +41,9 @@ public class MundoPruebas {
 		else
 			System.out.println("Bienvenida: " + joaquin.nombre);
 		
+		assert joaquin != null;
+
+		
 		System.out.println("antes de subir nivel:" + joaquin.toString());
 		joaquin.subirNivel();
 		System.out.println("despues de subir nivel:" + joaquin.toString());

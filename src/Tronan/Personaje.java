@@ -36,7 +36,17 @@ public class Personaje {
 	// solo es accesible desde dentro de su misma clase
 	private int estado;
 	public int sexo;
+	
+	private armadura armaduras[];
+	
+	public armadura[] getArmaduras() {
+		return armaduras;
+	}
 
+	public void setArmaduras(armadura[] armaduraCargar)
+	{
+		this.armaduras = armaduraCargar;
+	}
 	
 	
 	public Personaje(int vida, int nivel, int fuerza, int destreza, int resistencia, String nombre, int edad,
@@ -78,9 +88,9 @@ public class Personaje {
 		// Subimos el nivel
 		nivel++;
 
-		fuerza = RPGUtils.tirarDados() / 8 + 1;
-		destreza = RPGUtils.tirarDados() / 8 + 1;
-		resistencia = RPGUtils.tirarDados() / 8 + 1;
+		fuerza =fuerza + RPGUtils.tirarDados() / 8 + 1;
+		destreza =destreza + RPGUtils.tirarDados() / 8 + 1;
+		resistencia =resistencia + RPGUtils.tirarDados() / 8 + 1;
 
 	}
 	
