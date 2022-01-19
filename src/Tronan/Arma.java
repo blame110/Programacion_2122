@@ -15,6 +15,16 @@ public class Arma {
 	private int ataque;
 	private int tipo;
 	private int veneno;
+	
+	
+	public Arma(int nivel, String nombre, int ataque, int tipo, int veneno) {
+		super();
+		this.nivel = nivel;
+		this.nombre = nombre;
+		this.ataque = ataque;
+		this.tipo = tipo;
+		this.veneno = veneno;
+	}
 	public int getNivel() {
 		return nivel;
 	}

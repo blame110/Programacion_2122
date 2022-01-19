@@ -12,9 +12,6 @@ public class Personaje {
 	// Constantes Globales de la clase
 	public static final int HOMBRE = 1;
 	public static final int MUJER = 2;
-		
-
-
 	
 	// Variables Miembro
 	//Si la definimos publica es visible desde cualquier lugar
@@ -25,18 +22,26 @@ public class Personaje {
 	private int destreza;
 	private int resistencia;
 	private String nombre;
+	private int maxArmas;
+	private int maxArmaduras;
 	//Si la definimos protected es visible desde el paquete donde este la clase
 	//Y las clases que hereden
 	private int edad;
-	private static String region;
+	public static String region;
 	// Pongo la variable miembro estado privada
 	// solo es accesible desde dentro de su misma clase
 	private int estado;
 	private int sexo;
 	
+	//Conjunto de Armaduras que tiene 
+	private armadura armaduras[];
+	
+	//Conjunto de Armas que posee
+	public Arma armas[];
+	
 	
 	public Personaje(int vida, int nivel, int fuerza, int destreza, int resistencia, String nombre, int edad,
-			int estado, int sexo) {
+			int estado, int sexo, int maxArmas) {
 		super();
 		this.vida = vida;
 		this.nivel = nivel;
@@ -47,6 +52,9 @@ public class Personaje {
 		this.edad = edad;
 		this.estado = estado;
 		this.sexo = sexo;
+		this.maxArmas = maxArmas;
+		this.armas = new Arma[maxArmas];
+		
 	}
 
 	/**
@@ -67,14 +75,8 @@ public class Personaje {
 		sexo=0;
 	}
 	
-	//Conjunto de Armaduras que tiene 
-	private armadura armaduras[];
-	
-	//Conjunto de Armas que posee
-	private Arma armas[];
-	
-	
 
+	
 	
 	public int getVida() {
 		return vida;
