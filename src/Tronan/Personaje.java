@@ -1,5 +1,7 @@
 package Tronan;
 
+import java.util.Arrays;
+
 /**
  * Clase Personaje
  * 
@@ -7,46 +9,30 @@ package Tronan;
  */
 public class Personaje {
 
-	public int getDestreza() {
-		return destreza;
-	}
-
-	public void setDestreza(int destreza) {
-		this.destreza = destreza;
-	}
-
 	// Constantes Globales de la clase
 	public static final int HOMBRE = 1;
 	public static final int MUJER = 2;
+		
 
+
+	
 	// Variables Miembro
 	//Si la definimos publica es visible desde cualquier lugar
-	public int vida;
-	public int nivel;
-	public int fuerza;
+	private int vida;
+	private int nivel;
+	private int fuerza;
 	//Si la definimos privada es sólo visible desde el código de nuestra clase
 	private int destreza;
-	public int resistencia;
-	public String nombre;
+	private int resistencia;
+	private String nombre;
 	//Si la definimos protected es visible desde el paquete donde este la clase
 	//Y las clases que hereden
-	protected int edad;
-	public static String region;
+	private int edad;
+	private static String region;
 	// Pongo la variable miembro estado privada
 	// solo es accesible desde dentro de su misma clase
 	private int estado;
-	public int sexo;
-	
-	private armadura armaduras[];
-	
-	public armadura[] getArmaduras() {
-		return armaduras;
-	}
-
-	public void setArmaduras(armadura[] armaduraCargar)
-	{
-		this.armaduras = armaduraCargar;
-	}
+	private int sexo;
 	
 	
 	public Personaje(int vida, int nivel, int fuerza, int destreza, int resistencia, String nombre, int edad,
@@ -81,6 +67,113 @@ public class Personaje {
 		sexo=0;
 	}
 	
+	//Conjunto de Armaduras que tiene 
+	private armadura armaduras[];
+	
+	//Conjunto de Armas que posee
+	private Arma armas[];
+	
+	
+
+	
+	public int getVida() {
+		return vida;
+	}
+
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+	public int getFuerza() {
+		return fuerza;
+	}
+
+	public void setFuerza(int fuerza) {
+		this.fuerza = fuerza;
+	}
+
+	public int getDestreza() {
+		return destreza;
+	}
+
+	public void setDestreza(int destreza) {
+		this.destreza = destreza;
+	}
+
+	public int getResistencia() {
+		return resistencia;
+	}
+
+	public void setResistencia(int resistencia) {
+		this.resistencia = resistencia;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public static String getRegion() {
+		return region;
+	}
+
+	public static void setRegion(String region) {
+		Personaje.region = region;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+
+	public int getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(int sexo) {
+		this.sexo = sexo;
+	}
+
+	public armadura[] getArmaduras() {
+		return armaduras;
+	}
+
+	public void setArmaduras(armadura[] armaduras) {
+		this.armaduras = armaduras;
+	}
+
+	public Arma[] getArmas() {
+		return armas;
+	}
+
+	public void setArmas(Arma[] armas) {
+		this.armas = armas;
+	}
+
+	
+	
 	/**
 	 * Metodo que sube de nivel al personaje
 	 */
@@ -93,13 +186,15 @@ public class Personaje {
 		resistencia =resistencia + RPGUtils.tirarDados() / 8 + 1;
 
 	}
-	
-	public String toString()
-	{
-		String texto = "Nombre: "+ nombre + " Vida: " +  vida + " Nivel : " +  nivel + " Fuerza: " + fuerza;
-		
-		return texto;
+
+	@Override
+	public String toString() {
+		return "Personaje [vida=" + vida + ", nivel=" + nivel + ", fuerza=" + fuerza + ", destreza=" + destreza
+				+ ", resistencia=" + resistencia + ", nombre=" + nombre + ", edad=" + edad + ", estado=" + estado
+				+ ", sexo=" + sexo + ", armaduras=" + Arrays.toString(armaduras) + ", armas=" + Arrays.toString(armas)
+				+ "]";
 	}
+	
 	
 	
 }
