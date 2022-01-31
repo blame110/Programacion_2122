@@ -21,6 +21,13 @@ public class PruebasExamen {
 		sergio.listaAsignaturas[Alumno.POS_INGLES] = ingles;
 		sergio.listaAsignaturas[Alumno.POS_MUSICA] = musica;
 		
+		try {
+		sergio.listaAsignaturas[7] = ingles;
+		}
+		catch (ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println("fallo al acceder al array");
+		}
 		
 		System.out.println("La nota maxima de " +  sergio.nombre + " es: "+ sergio.notaMaximaArray().getNota() + "en la asignatura" +  sergio.notaMaximaArray().getNombre());
 		System.out.println("La nota media de " +  sergio.nombre + " es: "+ sergio.notaMediaArray());
