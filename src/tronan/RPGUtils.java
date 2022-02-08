@@ -1,4 +1,4 @@
-package Tronan;
+package tronan;
 
 public class RPGUtils {
 	

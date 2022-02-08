@@ -1,7 +1,8 @@
 package tema2;
 
 import java.util.Scanner;
-import Tronan.Personaje;
+
+import tronan.Personaje;
 
 public class EjemploCondicional1 {
 
