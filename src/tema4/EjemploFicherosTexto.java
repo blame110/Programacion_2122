@@ -70,7 +70,7 @@ public class EjemploFicherosTexto {
 		try {
 			//Creamos el fichero con FileWriter y utilizamos PrintWriter
 			//Para escribir en el
-			FileWriter fw = new FileWriter(RUTA + "libros.txt",true);
+			FileWriter fw = new FileWriter(RUTA + "libros.txt",false);
 			PrintWriter pw = new PrintWriter(fw);
 			
 			//Recorremos el array y escribimos el libro en el fichero
