@@ -1,5 +1,5 @@
 
-package tema1base;
+package tema1;
 
 public class Alumno {
 

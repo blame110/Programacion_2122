@@ -1,4 +1,4 @@
-package tema1base;
+package tema1;
 
 import org.slf4j.LoggerFactory;
 import ch.qos.logback.classic.Logger;

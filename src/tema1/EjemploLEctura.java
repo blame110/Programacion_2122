@@ -1,4 +1,4 @@
-package tema1base;
+package tema1;
 
 import java.io.IOException;
 import java.util.Scanner;

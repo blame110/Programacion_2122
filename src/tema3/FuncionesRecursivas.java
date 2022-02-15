@@ -20,6 +20,37 @@ public class FuncionesRecursivas {
 
 	}
 
+	/**
+	 * Busca el numero num en listaNum de forma recursiva Mira si es el ultimo y
+	 * sino llama a la funcion con el array quitando esa ultima posicion
+	 * 
+	 * @param num      numero a buscar
+	 * @param listaNum lista de numeros
+	 * @return falso si no esta el numero en la lista, true en caso contrario
+	 */
+	public static boolean contiene(int num, int listaNum[]) {
+
+		// Caso basico el numero es el último
+		if (num == listaNum[listaNum.length - 1])
+			return true;
+		else
+		// Si no es el último y solo teniamos ese elemnto implica que
+		// No estaba en la lista, ya los comprobamos todos
+		if (listaNum.length == 1)
+			return false;
+		else
+			// Si no es el ultimo y hay mas de un elemento, seguimos
+			//buscando llamando a la misma funcion (recursividad)
+			//Pero con la lista mas corta eliminando el ultimo que hemos comparado
+			return contiene(num, dividirArray(listaNum, 0, listaNum.length - 2));
+
+	}
+
+	/**
+	 * Funcion factorial que devuelve la multiplicacion desde 1 hasta el numero recibido
+	 * @param num numero del cual buscamos el factorial
+	 * @return un entero con la multiplicación
+	 */
 	long factorialIterativa(int num) {
 
 		long resultado = 1;
@@ -64,18 +95,6 @@ public class FuncionesRecursivas {
 		teclado.close();
 	}
 
-	public static boolean contiene(int num, int listaNum[]) {
-
-		// Caso basico el numero es el último
-		if (num == listaNum[listaNum.length - 1])
-			return true;
-		else if (listaNum.length == 1)
-			return false;
-		else
-			return contiene(num, dividirArray(listaNum, 0, listaNum.length - 2));
-
-	}
-
 	static int[] dividirArray(int listaNumeros[], int inicio, int fin) {
 
 		if (listaNumeros == null)
@@ -85,7 +104,7 @@ public class FuncionesRecursivas {
 
 		// Defino un array para guardar el resultado
 		// El tamaño sera el indice final menos el inicial
-		int listaTemp[] = new int[fin - inicio +1];
+		int listaTemp[] = new int[fin - inicio + 1];
 
 		// definimos j para ir rellenando las posiciones del array a devolver
 		int j = 0;

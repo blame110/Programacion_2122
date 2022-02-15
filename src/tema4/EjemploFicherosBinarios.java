@@ -12,7 +12,7 @@ public class EjemploFicherosBinarios {
 	
 	//Constantes para definir los posibles errores
 	public static final int ERROR_FILENOTFOUND  = -1;
-	public static final int ERROR_LECTURA  = -2;
+	public static final int ERROR_LECTURAESCRITURA  = -2;
 	public static final int COPIA_CORRECTA  = 0;
 
 
@@ -21,12 +21,30 @@ public class EjemploFicherosBinarios {
 	
 	public static void main(String[] args) {
 		
-		copiarFichero("img\\gris.jpg","c:\\logs\\imagen.jpg");
+		int resultado = copiarFichero("img\\lavae.jpg","c:\\logs\\imagen3.jpg");
 		// TODO Auto-generated method stub
 
+		switch (resultado)
+		{
+		case COPIA_CORRECTA:
+				System.out.println("El fichero se ha copiado correctamente");
+				break;
+		case ERROR_FILENOTFOUND:
+			System.out.println("El fichero no se ha encontrado o no tenemos permisos");
+			break;
+		case ERROR_LECTURAESCRITURA:
+			System.out.println("Ha habido un problema al escribir o leer del fichero");
+			break;
+
+		}
 	}
 	
-	
+	/**
+	 * El modulo copia el fichero origen en la ruta destino de forma binaria
+	 * @param rutaOrigen
+	 * @param rutaDestino
+	 * @return
+	 */
 	public static int copiarFichero(String rutaOrigen, String rutaDestino)
 	{
 		//Por defecto suponemos que se va a copiar bien
@@ -79,13 +97,15 @@ public class EjemploFicherosBinarios {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resultado = ERROR_FILENOTFOUND;
 		} catch (IOException ioe)
 		{
 			ioe.printStackTrace();
+			resultado = ERROR_LECTURAESCRITURA;
 		}
 		
 		
-		
+		//Devolvemos el resultado
 		return resultado;
 	}
 	

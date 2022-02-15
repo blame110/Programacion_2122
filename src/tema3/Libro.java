@@ -114,6 +114,11 @@ public class Libro {
 		return isbn;
 	}
 	
+	
+	public void setIsbn(String isbn)
+	{
+		this.isbn = isbn;
+	}
 	/**
 	 * Intenta realizar un prestamo de este libro
 	 * @param dia dia que se presto
