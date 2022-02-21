@@ -6,14 +6,20 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import tema3.Libro;
 
 public class EjemploFicherosSecuenciales {
 	
 	
-	public static void lecturaSecuencial(String rutaFichero)
+	public static ArrayList<Libro> lecturaSecuencial(String rutaFichero)
 	{
+		// Definicion de array Libro listaLibros[] = new Libro[100];
+		//Para el arraylist no es necesario definir el tamaño
+		ArrayList<Libro> listaLibros = new ArrayList<Libro>();
+
+		
 		//Definimos los objetos para la lectura
 		try {
 			FileInputStream fin = new FileInputStream(rutaFichero);
@@ -21,9 +27,12 @@ public class EjemploFicherosSecuenciales {
 			
 			//Creo un objeto de tipo libro para almacenar cada registro
 			//del fichero
+			
 			Libro libroLectura = new Libro();
 			
-			
+			//Leemos el archivo mientras sea posible leer de el
+			while (din.available()!=0)
+			{
 			//Leemos los datos del fichero en el mismo orden
 			//En el que se escribieron
 			libroLectura.setNombre(din.readUTF());
@@ -36,13 +45,15 @@ public class EjemploFicherosSecuenciales {
 			libroLectura.setAnioPub(din.readInt());
 			libroLectura.setIsbn(din.readUTF());
 			
-			System.out.println("Libro leido: " + libroLectura.toString());
-
+			//Añadimos este libro a la lista de libros
+			listaLibros.add(libroLectura);
 			
-			
+			}
 			//Cerramos los stream de los ficheros
 			din.close();
 			fin.close();
+			
+			
 			
 		//Controlamos las excepciones con los posibles fallos
 		//Que podemos al leer ficheros
@@ -54,6 +65,8 @@ public class EjemploFicherosSecuenciales {
 			ioe.printStackTrace();
 		}
 		
+		//Devolvemos la lista con los libros cargados desde el fichero
+		return listaLibros;
 		
 	}
 
@@ -99,7 +112,10 @@ public class EjemploFicherosSecuenciales {
 			dos.close();
 			fos.close();
 			
-			lecturaSecuencial("c:\\logs\\ficheroSecuencial.dat");
+			
+			ArrayList<Libro> lista = lecturaSecuencial("c:\\logs\\ficheroSecuencial.dat");
+			
+			System.out.println(lista.toString());
 		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
