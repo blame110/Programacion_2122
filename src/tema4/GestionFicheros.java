@@ -13,11 +13,7 @@ public class GestionFicheros {
 	public static final int FICHERO_EXISTE =-5;
 	public static final int ERROR_ESCRITURA =-6;
 
-
-	
-
-	
-	public static int eliminarFichero(String rutaFichero)
+	public int eliminarFichero(String rutaFichero)
 	{
 		//Definimos la variables que guarda el resultado
 		int resultado = OK;
@@ -31,6 +27,47 @@ public class GestionFicheros {
 		return resultado;
 	}
 	
+	/**
+	 * Devuelve null si el directorio esta vacio y Ok si no
+	 * La salida logica seria true o false, pero es para testear con junit
+	 * @param rutaDirectorio
+	 * @return
+	 */
+	public static String directorioVacio(String rutaDirectorio)
+	{
+		//Definimos la variables que guarda el resultado
+		String resultado = null;
+		
+		File directorio = new File(rutaDirectorio);
+		if (!directorio.isDirectory())
+		{
+			resultado = null;
+			System.out.println("No es un directorio");
+		}
+		else
+		{
+			
+			//Con esta funcion nos devuelve un array de file
+			//Y podemos modificarlos y hacer lo que queramos
+			//
+			//File listaficheros[] = fichero.listFiles()
+		
+			String listaFicheros[] = directorio.list();
+			
+			System.out.println("El directorio contiene " + listaFicheros.length);
+			
+			if (listaFicheros.length==0)
+				resultado = "OK";
+			else
+				resultado = null;
+			
+			
+			
+		}
+		
+		//Devolvemos el resultado de la operacion
+		return resultado;
+	}	
 	
 	public static int mostrarContenidoDirectorio(String rutaDirectorio)
 	{

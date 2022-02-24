@@ -51,8 +51,10 @@ class CalculadoraTest {
 
 		//Vamos a generar un numero 
 		
-		assertEquals((x+y),cal.suma(x,y));
-	
+		assertEquals((x+y),cal.suma(x,y),"Se espera que coincida la suma");
+
+		assertTrue((x+y)==cal.suma(x, y));
+		
 	}
 
 }

@@ -39,7 +39,7 @@ public class FuncionesRecursivas {
 		if (listaNum.length == 1)
 			return false;
 		else
-			// Si no es el ultimo y hay mas de un elemento, seguimos
+			//Si no es el ultimo y hay mas de un elemento, seguimos
 			//buscando llamando a la misma funcion (recursividad)
 			//Pero con la lista mas corta eliminando el ultimo que hemos comparado
 			return contiene(num, dividirArray(listaNum, 0, listaNum.length - 2));

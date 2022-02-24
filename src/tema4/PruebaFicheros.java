@@ -5,8 +5,10 @@ public class PruebaFicheros {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		GestionFicheros gesFich = new GestionFicheros();
+		
 		//Borramos un fichero
-		int resultado = GestionFicheros.eliminarFichero("C:\\logs\\tests.log");
+		int resultado = gesFich.eliminarFichero("C:\\logs\\tests.log");
 	
 		if (resultado==GestionFicheros.OK)
 			System.out.println("El fichero se borro correctamente");
@@ -21,6 +23,9 @@ public class PruebaFicheros {
 		
 		resultado = GestionFicheros.crearDirectorio("C:\\logs", "CarpetaCreada");
 	
+		
+		System.out.println("Resultado: "+gesFich.directorioVacio("c:\\logs\\vacia"));
+		
 	}
 
 }
