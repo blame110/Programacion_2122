@@ -10,14 +10,11 @@ public class EjemplosFunciones1 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner teclado = new Scanner(System.in);
 		int edad;
 
-		String strEdad;
+		String strEdad="29";
 		// Leemos la edad como cadena de texto
 		// Que es lo normal en un formulario
-		System.out.println("Introduce tu edad:");
-		strEdad = teclado.next();
 
 		if (esNumerico(strEdad)) {
 			edad = Integer.valueOf(strEdad);
@@ -28,6 +25,10 @@ public class EjemplosFunciones1 {
 		int numeros[] = { 3, 23, 8, 2, 3 };
 		int num1 = 7, num2 = 8;
 		Date fecha = new Date();
+		
+		String listaNombres[] = new String[10];
+		
+		
 
 		System.out.println("La suma de 4 y 5 es:" + suma(num1, num2));
 
@@ -51,6 +52,9 @@ public class EjemplosFunciones1 {
 
 		System.out.println(" El dni 455890634 es " + comprobacionDni("458944440444S"));
 
+		
+		System.out.println("El binario de 16 es" + calcularBinario(16));
+		
 	}
 
 	/**
@@ -248,5 +252,39 @@ public class EjemplosFunciones1 {
 
 		return esNumerico;
 	}
+	
+	/**
+	 * se calculan los divisores del numero
+	 * @param num
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public static ArrayList arrayDivisores(int num) {
+		ArrayList divisores;
+		divisores= new ArrayList();
+		int i =1;
+		while(i<num) {
+			if((num%i)==0) {
+				divisores.add(i);
+			}
+			i++;
+		}
+		return divisores;
+	}
+	
+	public static String calcularBinario (int numero) {
+		
+		int digito = 0;
+		String binario = "";
+		
+		while (numero > 0) {
+			digito = (numero % 2);
+			binario = digito + binario;
+			numero = numero / 2;
+		}
+
+		return binario;
+	}
+
 
 }
