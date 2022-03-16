@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import tema3.Libro;
+import tema3.examenes.Libro;
 
 public class EjemploFicherosSecuenciales {
 	

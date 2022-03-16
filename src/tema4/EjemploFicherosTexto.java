@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import tema3.Libro;
+import tema3.examenes.Libro;
 
 public class EjemploFicherosTexto {
 	

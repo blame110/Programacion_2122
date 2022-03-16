@@ -1,4 +1,4 @@
-package tema3;
+package tema3.examenes;
 
 public class Libro {
  

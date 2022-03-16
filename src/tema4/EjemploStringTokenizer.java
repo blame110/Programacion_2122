@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-import tema3.Libro;
+import tema3.examenes.Libro;
 
 public class EjemploStringTokenizer {
 
