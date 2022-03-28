@@ -11,6 +11,127 @@ public class JugadorDAO {
 
 	
 	
+	/**
+	 * Recibe un JugadorVO y actualiza solo los campos no nulos
+	 * @param jugador
+	 * @return 0 si hubo algun fallo y 1 si se modifico correctamente
+	 */
+	public static int actualizarJugador(JugadorVO jugador)
+	{
+		int resultado=0;
+		int posicion=1;
+		
+		String query = "UPDATE jugador SET ";
+		
+		//Comprobamos que no nos hayan metido un jugador nulo
+		if (jugador== null) return 0;
+		
+		//Comprobamos si el nombre se ha introducido para modificar
+		//En cuyo caso lo añadimos a la query
+		if (jugador.getNombre()!=null && !jugador.getNombre().equals(""))
+		{
+			query= query + "nombre=?";
+			posicion++;
+		}
+		
+		//Para los siguientes campos, hay que poner la "," si ya había antes
+		//un campo previo en el set, lo sabemos porque la posicion
+		//ya se habra incrementado y no sera 1
+		if (jugador.getEdad()>=0)
+		{
+			if (posicion==1)
+				query= query + "edad=?";
+			else
+				query= query + ",edad=?";
+			
+			posicion++;
+		}
+
+		if (jugador.getAltura()>=0)
+		{
+			if (posicion==1)
+				query= query + "altura=?";
+			else
+				query= query + ",altura=?";
+			
+			posicion++;
+		}
+		
+		if (jugador.getSexo()!=null && !jugador.getSexo().equals(""))
+		{
+			if (posicion==1)
+				query= query + "sexo=?";
+			else
+				query= query + ",sexo=?";
+			
+			posicion++;
+		}
+	
+		//Añadimos el where al final para que modifique solo el jugador
+		query= query.concat(" WHERE idjugador=?");
+		System.out.println(query);
+		
+		//Si no hay ningun campo a modificar nos salimos
+		if (posicion==1)
+			return 0;
+		
+		//Nos conectamos a la BD
+		Connection con = ConexionBD.conectarBD();	
+		
+		try {
+			//Creamos el preparedstaement
+			PreparedStatement pStmt = con.prepareStatement(query);
+			
+			//Reseteamos la posicion
+			posicion=1;
+			
+			if (jugador.getNombre()!=null && !jugador.getNombre().equals(""))
+			{
+				pStmt.setString(posicion, jugador.getNombre());
+				posicion++;
+			}
+			
+			if (jugador.getEdad()>=0)
+			{
+				pStmt.setInt(posicion, jugador.getEdad());
+				posicion++;
+			}
+
+			if (jugador.getAltura()>=0)
+			{
+				pStmt.setInt(posicion, jugador.getAltura());
+				posicion++;
+			}
+			
+			if (jugador.getSexo()!=null && !jugador.getSexo().equals(""))
+			{
+				pStmt.setString(posicion, jugador.getSexo());
+				posicion++;
+			}
+					
+			//Ponemos el id del jugador
+			pStmt.setInt(posicion, jugador.getId());
+			
+			//Ejecutamos la instruccion
+			resultado = pStmt.executeUpdate();
+			
+			pStmt.close();
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+			
+		return resultado;
+		
+	}
+
+	
+	
 	public static int actualizarJugador2(JugadorVO jugador)
 	{
 		int resultado=0;
@@ -178,6 +299,68 @@ public class JugadorDAO {
 		return 0;
 	}
 
+	public static void mostrarJugadores(int pagina, int numElementos)
+	{
+		
+		//Nos conectamos a la BD
+		Connection con = ConexionBD.conectarBD();
+		
+		String query = "SELECT * FROM jugador LIMIT ? offset ?";
+		
+		try {
+			//Generamos el preparedStatement a partir de la query sql
+			PreparedStatement pStmt = con.prepareStatement(query);
+			
+			pStmt.setInt(1, numElementos);
+			pStmt.setInt(2, (pagina-1)*numElementos);
+				
+			//Ejecutamos la query y nos devuelve los datos 
+			//En una estructura resultset
+			ResultSet res = pStmt.executeQuery();
+			
+			//Boolean que nos comprueba si es el ultimo elemento
+			boolean ultimo = true;
+			int id=0,altura=0,edad=0;
+			String sexo="",nombre="";
+			
+			System.out.println("********************************");
+			System.out.println("**********JUGADORES*************");
+			
+			System.out.println("********************************");
+			
+			
+			//Mientras haya un siguiente elemento seguimos leyendo 
+			//Registros, next nos pasa al siguiente registro y nos devuelve
+			//true si hay mas registros por leer
+			while (res.next())
+			{
+			//Pasamos al siguiente elemento
+			
+				id = res.getInt("idjugador");
+				nombre = res.getString("nombre");
+				edad = res.getInt("edad");
+				altura = res.getInt("altura");
+				sexo = res.getString("sexo");
+				
+				System.out.println("Id: " + id);
+				System.out.println("nombre: " + nombre);
+				System.out.println("edad: " + edad);
+				System.out.println("altura: " + altura);
+				System.out.println("sexo: " + sexo);
+				
+			}
+			
+			System.out.println("********************************");
+
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
+	
 	public static void mostrarJugadores()
 	{
 		
@@ -236,5 +419,7 @@ public class JugadorDAO {
 		}
 		
 	}
-	
+
+
+
 }

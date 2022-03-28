@@ -44,13 +44,23 @@ public class PrincipalBD {
 		
 		JugadorDAO.mostrarJugadores();
 		
-		JugadorVO raul = new JugadorVO(10,"Raúl",21,178,"M");
+		for (int i=12;i<=40;i++)
+		{
+			JugadorVO changFeng = new JugadorVO(i,"ChangFeng",18,178,"M");
+			
+			JugadorDAO.insertarJugador(changFeng);
+
+		}
 		
-		//JugadorDAO.insertarJugador(raul);
-		
-		JugadorVO yuria = new JugadorVO(9,"Yuria",6,123,"F");
+		JugadorVO yuria = new JugadorVO(9,"Yuria",6,115,"F");
 		
 		JugadorDAO.actualizarJugador2(yuria);
+		
+		JugadorVO raulm = new JugadorVO(10,"Manuel",-1,173,"");
+		
+		JugadorDAO.actualizarJugador(raulm);
+		
+		JugadorDAO.mostrarJugadores(3,10);
 
 	}
 }
