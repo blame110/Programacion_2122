@@ -1,4 +1,4 @@
-package tema5;
+package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,11 +28,18 @@ public class ConexionBD {
 
 			// Nos conectamos a la Base de Datos
 			con = DriverManager.getConnection(url, user, password);
+			
+			
 
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		
 
 		return con;
 	}
