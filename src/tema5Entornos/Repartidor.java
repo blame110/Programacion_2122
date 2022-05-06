@@ -58,6 +58,7 @@ public class Repartidor extends Persona{
 		return this.sueldo - this.sueldo*this.calculoRenteciones()/100;
 	}
 	
+	@Override
 	public int calculoRenteciones() {
 		//A los repartidores se les retiene solo un 10%
 		return 10;
