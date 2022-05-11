@@ -61,6 +61,12 @@ public class JugadorVO {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+
+	@Override
+	public String toString() {
+		return "JugadorVO [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", altura=" + altura + ", sexo=" + sexo
+				+ "]";
+	}
 	
 	
 	
